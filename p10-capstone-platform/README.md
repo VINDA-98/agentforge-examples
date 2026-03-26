@@ -1,27 +1,37 @@
 # p10-capstone-platform
 
-## 项目导航速览
+## 项目概览
 
-- 项目目标：把前面课程能力汇总成一个可演示、可扩展、可交付的毕业项目平台骨架。
-- 对应章节：[第 13 章](../../docs/ch13-agent-app-interface/)、[第 14 章](../../docs/ch14-deployment-devops/)、[第 15 章](../../docs/ch15-enterprise-lowcode-cases/)、[第 16 章](../../docs/ch16-capstone/)
-- 适合什么时候做：建议在完成产品化与落地阶段后统一推进，作为整套课程的最终作品与展示入口。
-- 启动方式：进入目录后执行 `python3 src/main.py --mode demo --request-type faq --message "p10 项目适用于哪些章节？"`。
-- GitHub 查看源码 / 下载代码：公开示例仓库项目目录，[p10-capstone-platform](https://github.com/VINDA-98/agentforge-examples/tree/main/p10-capstone-platform)
-- 说明：文档站部署来自私有主仓库；网站中的下载入口统一跳到公开示例仓库。
-- 返回导航：[学习路径](../../docs/learning-path.md) · [章节索引](../../docs/chapter-index.md) · [项目总览](../../docs/project-overview.md)
+- 仓库定位：`agentforge-examples` 是 AgentForge 的公开示例代码仓库，服务于 AgentForge 文档站中的示例下载与配套说明。
+- 当前项目：`p10-capstone-platform`
+- 对应文档章节：第 13 章《把 Agent（智能体）做成应用》、第 14 章《部署、Docker（容器化运行环境）与运维》、第 15 章《企业场景与低代码平台对比》、第 16 章《Capstone》
+- 项目定位：一个围绕平台入口、服务注册与最小 HTTP 接口的综合实战示例。
+- 维护说明：本项目由阿伟开发与维护。
+- 阅读建议：建议配合 AgentForge 文档站对应章节阅读，再结合 `src/`、`starter/`、`solution/` 对照理解实现。
+- 仓库首页：[VINDA-98/agentforge-examples](https://github.com/VINDA-98/agentforge-examples)
+- 当前项目源码：[p10-capstone-platform](https://github.com/VINDA-98/agentforge-examples/tree/main/p10-capstone-platform)
 
-## 项目目标
-这个项目解决“前面学到的 Agent 能力怎样收束成一个可演示、可运行、可扩展的平台骨架”这个问题。你会得到一个最小 Capstone（毕业项目）平台：它可以注册多个 Agent 服务，支持 `CLI（命令行界面）` 演示，也支持最小 `HTTP` 接口。
+## 如何运行（快速开始）
 
-## 适合配套学习的章节
-- 第 13 章：把 Agent（智能体）做成应用
-- 第 14 章：部署、Docker（容器化运行环境）与运维
-- 第 15 章：企业场景与低代码平台对比
-- 第 16 章：毕业项目（Capstone）
+```bash
+cd p10-capstone-platform
+cp .env.example .env
+python3 -m pip install -r requirements.txt
+python3 src/main.py --mode demo --request-type faq --message "p10 项目适用于哪些章节？"
+```
+
+可选命令：
+- 启动服务：`python3 src/main.py --mode serve`
+- 运行测试：`python3 -m unittest discover tests`
+- 运行起始代码：`python3 starter/main.py --request-type faq --message "p10 项目适用于哪些章节？"`
+- 运行参考实现：`python3 solution/main.py --request-type faq --message "p10 项目适用于哪些章节？"`
+
+## 项目说明
+这个项目解决“前面学到的 Agent 能力怎样收束成一个可演示、可运行、可扩展的平台骨架”这个问题。你会得到一个最小 Capstone 平台：它可以注册多个 Agent 服务，支持 `CLI（命令行界面）` 演示，也支持最小 `HTTP` 接口。
 
 ## 适合谁
-- 想把前面项目能力整合成一个“像产品”的最小骨架
-- 想练习入口、服务、配置、接口边界的学员
+- 适合希望上手 AI Agent 开发的开发者。
+- 想把前面项目能力整合成一个“像产品”的最小骨架，并练习入口、服务、配置、接口边界的开发者。
 
 ## 项目范围
 本项目会做：
@@ -38,12 +48,12 @@
 - 复杂部署脚本
 
 ## 项目场景
-项目使用“课程 Agent 平台”场景：
-- `faq`：回答课程和项目相关问题
+项目使用“示例 Agent 平台”场景：
+- `faq`：回答文档和项目相关问题
 - `plan`：给一个需求生成落地计划
 - `review`：根据检查清单做交付前检查
 
-这能帮助学员理解：毕业项目不一定一开始就要做大，而是先把平台边界跑通。
+这能帮助开发者理解：综合实战不一定一开始就要做大，而是先把平台边界跑通。
 
 ## 先解释两个入口
 - `CLI（命令行界面）`：适合你本地快速演示、排错和对照输出。
@@ -51,7 +61,7 @@
 
 ## 安装步骤
 ```bash
-cd projects/p10-capstone-platform
+cd p10-capstone-platform
 cp .env.example .env
 python3 -m pip install -r requirements.txt
 ```
@@ -60,8 +70,8 @@ python3 -m pip install -r requirements.txt
 运行命令行演示：
 ```bash
 python3 src/main.py --mode demo --request-type faq --message "p10 项目适用于哪些章节？"
-python3 src/main.py --mode demo --request-type plan --message "我要上线一个课程答疑助手"
-python3 src/main.py --mode demo --request-type review --message "请帮我检查毕业项目是否具备演示条件"
+python3 src/main.py --mode demo --request-type plan --message "我要上线一个 AI Agent 答疑助手"
+python3 src/main.py --mode demo --request-type review --message "请帮我检查这个综合示例是否具备演示条件"
 ```
 
 第一次运行建议按下面顺序做：
@@ -81,7 +91,7 @@ curl http://127.0.0.1:8787/health
 curl http://127.0.0.1:8787/agents
 curl -X POST http://127.0.0.1:8787/tasks \
   -H "Content-Type: application/json" \
-  -d '{"request_type":"plan","message":"我要上线一个课程答疑助手"}'
+  -d '{"request_type":"plan","message":"我要上线一个 AI Agent 答疑助手"}'
 ```
 
 运行测试：
@@ -100,7 +110,7 @@ python3 solution/main.py --request-type faq --message "p10 项目适用于哪些
 ```
 
 ## 预期输出
-运行 `python3 src/main.py --mode demo --request-type plan --message "我要上线一个课程答疑助手"` 后，你会看到类似输出：
+运行 `python3 src/main.py --mode demo --request-type plan --message "我要上线一个 AI Agent 答疑助手"` 后，你会看到类似输出：
 
 ```json
 {
@@ -115,18 +125,18 @@ python3 solution/main.py --request-type faq --message "p10 项目适用于哪些
 
 | 参数值 | 作用 | 适合先拿来验证什么 |
 | --- | --- | --- |
-| `faq` | 回答课程和项目问题 | 平台基本路由是否正常 |
+| `faq` | 回答文档和项目问题 | 平台基本路由是否正常 |
 | `plan` | 输出落地计划 | 结构化结果是否清晰 |
 | `review` | 给出交付检查建议 | 验收思路是否能被平台承接 |
 
 ## starter 和 solution 如何对照
-- `starter/main.py`：保留了“选择 Agent”和“处理请求”的 `TODO`
-- `solution/main.py`：给出一个更短的平台路由版本
-- `src/`：项目主线版本，包含配置、服务、Agent 注册和 HTTP 服务
+- `starter/main.py`：保留了“选择 Agent”和“处理请求”的 `TODO`。
+- `solution/main.py`：给出一个更短的平台路由版本。
+- `src/`：项目主线版本，包含配置、服务、Agent 注册和 HTTP 服务。
 
 ## 目录说明
 ```text
-projects/p10-capstone-platform/
+p10-capstone-platform/
 ├── README.md
 ├── .env.example
 ├── requirements.txt
@@ -151,18 +161,23 @@ projects/p10-capstone-platform/
     └── main.py
 ```
 
+## 使用与署名
+- 本项目由阿伟开发与维护。
+- 适合希望上手 AI Agent 开发的开发者，并建议配合 AgentForge 文档站阅读。
+- 允许个人学习与实践；引用或转载项目说明时，请保留作者署名“阿伟”和仓库地址：`https://github.com/VINDA-98/agentforge-examples`。
+
 ## 验收标准
 - `demo` 模式可以处理 FAQ、计划生成和交付检查三种请求
 - `serve` 模式可以启动服务并返回 JSON
 - `python3 -m unittest discover tests` 可以通过
-- 学员可以从这个骨架继续扩展自己的毕业项目
+- 开发者可以从这个骨架继续扩展自己的综合实战平台
 
 ## 常见问题
-### 1. 为什么毕业项目平台不直接做成完整 Web 产品？
-因为课程这里先解决“平台边界”和“最小交付链路”。如果一开始就上完整系统，初学者会被框架和部署细节淹没。
+### 1. 为什么平台不直接做成完整 Web 产品？
+因为这里先解决“平台边界”和“最小交付链路”。如果一开始就上完整系统，初学者会被框架和部署细节淹没。
 
 ### 2. 为什么同时提供 CLI 和 HTTP？
-CLI 更适合快速演示和调试，HTTP 更适合理解“把 Agent 做成服务”的边界。两个入口都保留，学员更容易建立整体认识。
+CLI 更适合快速演示和调试，HTTP 更适合理解“把 Agent 做成服务”的边界。两个入口都保留，更容易建立整体认识。
 
 ### 3. 为什么内置 Agent 只有 3 个？
-毕业项目最容易失控的地方就是功能堆叠。这里故意只保留 3 个角色，帮助学员先完成一个可展示、可验收的最小平台。
+综合平台最容易失控的地方就是功能堆叠。这里故意只保留 3 个角色，帮助开发者先完成一个可展示、可验收的最小平台。

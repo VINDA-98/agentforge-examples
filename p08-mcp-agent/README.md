@@ -1,31 +1,43 @@
 # p08-mcp-agent
 
-## 项目导航速览
+## 项目概览
 
-- 项目目标：通过统一接入层连接外部能力，跑通 MCP 风格的连接、发现、调用链路。
-- 对应章节：[第 10 章](../../docs/ch10-mcp-integration/)
-- 适合什么时候做：建议在完成第 10 章后动手，用项目理解本地工具调用和外部系统接入的边界差异。
-- 启动方式：进入目录后执行 `python3 src/main.py --question "p08 项目现在是什么状态？"`。
-- GitHub 查看源码 / 下载代码：公开示例仓库项目目录，[p08-mcp-agent](https://github.com/VINDA-98/agentforge-examples/tree/main/p08-mcp-agent)
-- 说明：文档站部署来自私有主仓库；网站中的下载入口统一跳到公开示例仓库。
-- 返回导航：[学习路径](../../docs/learning-path.md) · [章节索引](../../docs/chapter-index.md) · [项目总览](../../docs/project-overview.md)
+- 仓库定位：`agentforge-examples` 是 AgentForge 的公开示例代码仓库，服务于 AgentForge 文档站中的示例下载与配套说明。
+- 当前项目：`p08-mcp-agent`
+- 对应文档章节：第 10 章《MCP（模型上下文协议）与外部系统接入》
+- 项目定位：一个围绕统一接入层、能力发现与工具调用的 MCP 风格实战示例。
+- 维护说明：本项目由阿伟开发与维护。
+- 阅读建议：建议配合 AgentForge 文档站对应章节阅读，再结合 `src/`、`starter/`、`solution/` 对照理解实现。
+- 仓库首页：[VINDA-98/agentforge-examples](https://github.com/VINDA-98/agentforge-examples)
+- 当前项目源码：[p08-mcp-agent](https://github.com/VINDA-98/agentforge-examples/tree/main/p08-mcp-agent)
 
-## 项目目标
+## 如何运行（快速开始）
+
+```bash
+cd p08-mcp-agent
+cp .env.example .env
+python3 -m pip install -r requirements.txt
+python3 src/main.py --question "p08 项目现在是什么状态？"
+```
+
+可选命令：
+- 运行测试：`python3 -m unittest discover tests`
+- 运行起始代码：`python3 starter/main.py --question "p08 项目现在是什么状态？"`
+- 运行参考实现：`python3 solution/main.py --question "p08 项目现在是什么状态？"`
+
+## 项目说明
 这个项目解决“Agent 怎么通过统一接入层访问外部系统”这个问题。你会得到一个最小 MCP 风格示例：程序先连接一个本地模拟服务端（mock server），再发现可用工具，最后执行工具调用并整理结果。
 
-## 适合配套学习的章节
-- 第 10 章：MCP（模型上下文协议）与外部系统接入
-
 ## 适合谁
-- 已经理解 Tool Calling（工具调用）与 Workflow（工作流）
-- 想知道“连接外部系统”和“本地函数调用”有什么边界差异的学员
+- 适合希望上手 AI Agent 开发的开发者。
+- 已经理解 Tool Calling（工具调用）与 Workflow（工作流），并想知道“连接外部系统”和“本地函数调用”有什么边界差异的开发者。
 
 ## 项目范围
 本项目会做：
 - 提供一个最小 MCP 风格客户端
 - 用本地 JSON 模拟服务端（server）与工具清单
 - 支持连接、发现能力、调用工具三个动作
-- 演示查询项目状态、列出工作坊、查询课程规范
+- 演示查询项目状态、列出工作坊、查询示例规范
 - 提供 `starter/` 和 `solution/` 对照版本
 
 本项目不做：
@@ -36,18 +48,18 @@
 
 ## 先解释两个容易混淆的词
 - `服务端（server）`：你可以把它理解成“对外提供工具和数据的一侧”。本项目里它是本地模拟出来的，不是真正联网服务。
-- `mock server（模拟服务端）`：专门为了教学和测试准备的假服务。它的作用是让你先看懂连接、发现、调用链路，而不是一上来就被真实网络协议绊住。
+- `mock server（模拟服务端）`：专门为了演示和测试准备的假服务。它的作用是让你先看懂连接、发现、调用链路，而不是一上来就被真实网络协议绊住。
 
 ## 项目场景
-项目使用“课程工具接入层”场景：
+项目使用“示例项目接入层”场景，服务名称沿用示例数据：
 - `course_ops`：查询项目状态和工作坊安排
-- `course_policy`：查询课程规范
+- `course_policy`：查询示例规范
 
-这能帮助学员理解：MCP（模型上下文协议）的关键不是“神秘新 API”，而是“用统一方式接入外部能力”。
+这能帮助开发者理解：MCP（模型上下文协议）的关键不是“神秘新 API”，而是“用统一方式接入外部能力”。
 
 ## 安装步骤
 ```bash
-cd projects/p08-mcp-agent
+cd p08-mcp-agent
 cp .env.example .env
 python3 -m pip install -r requirements.txt
 ```
@@ -64,7 +76,7 @@ python3 src/main.py --question "starter 目录应该怎么用？"
 
 1. 先问项目状态，最容易看懂“连接 -> 发现 -> 调用”的完整链路。
 2. 再问工作坊安排，验证同一个服务端能暴露多个工具。
-3. 最后问课程规范，理解为什么不同服务端会提供不同能力。
+3. 最后问示例规范，理解为什么不同服务端会提供不同能力。
 
 运行测试：
 ```bash
@@ -98,13 +110,13 @@ python3 solution/main.py --question "p08 项目现在是什么状态？"
 ```
 
 ## starter 和 solution 如何对照
-- `starter/main.py`：保留了“发现工具”和“调用工具”的 `TODO`
-- `solution/main.py`：给出一个更短的本地接入示例
-- `src/`：项目主线版本，包含更清晰的 client、session 和 agent 拆分
+- `starter/main.py`：保留了“发现工具”和“调用工具”的 `TODO`。
+- `solution/main.py`：给出一个更短的本地接入示例。
+- `src/`：项目主线版本，包含更清晰的 client、session 和 agent 拆分。
 
 ## 目录说明
 ```text
-projects/p08-mcp-agent/
+p08-mcp-agent/
 ├── README.md
 ├── .env.example
 ├── requirements.txt
@@ -127,6 +139,11 @@ projects/p08-mcp-agent/
     └── main.py
 ```
 
+## 使用与署名
+- 本项目由阿伟开发与维护。
+- 适合希望上手 AI Agent 开发的开发者，并建议配合 AgentForge 文档站阅读。
+- 允许个人学习与实践；引用或转载项目说明时，请保留作者署名“阿伟”和仓库地址：`https://github.com/VINDA-98/agentforge-examples`。
+
 ## 验收标准
 - 能连接指定 server
 - 能列出 server 提供的工具
@@ -139,7 +156,7 @@ projects/p08-mcp-agent/
 Tool Calling 更像“模型决定调用哪个函数”。MCP（模型上下文协议）更强调“外部能力如何被统一发现和访问”。两者能配合，但关注点不同。
 
 ### 2. 为什么这里不用真实 MCP SDK？
-因为课程目标是先看懂链路：连接、发现、调用。等这个模型建立起来，再接真实协议会更容易。
+因为这里先强调接入链路：连接、发现、调用。等这个模型建立起来，再接真实协议会更容易。
 
 ### 3. 为什么还要有 server 名称？
 因为外部能力通常不是散落在本地代码里，而是来自某个独立系统或接入点。服务端（server）名称就是帮助你理解这个边界。
