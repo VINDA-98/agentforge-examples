@@ -1,0 +1,6 @@
+{
+  "title": "缺少字段示例",
+  "summary": "这个文件故意缺少 action_items 字段",
+  "priority": "紧急",
+  "owner": "课程助教"
+}

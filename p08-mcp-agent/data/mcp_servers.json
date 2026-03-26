@@ -1,0 +1,78 @@
+{
+  "servers": [
+    {
+      "name": "course_ops",
+      "description": "课程项目状态与工作坊安排服务",
+      "tools": [
+        {
+          "name": "get_project_status",
+          "description": "查询项目状态",
+          "input_schema": {
+            "project_key": "项目编号，例如 p08"
+          }
+        },
+        {
+          "name": "list_workshops",
+          "description": "列出本周工作坊",
+          "input_schema": {}
+        }
+      ]
+    },
+    {
+      "name": "course_policy",
+      "description": "课程规范查询服务",
+      "tools": [
+        {
+          "name": "search_policy",
+          "description": "根据关键词查询课程规范",
+          "input_schema": {
+            "keyword": "要查询的规则关键词"
+          }
+        }
+      ]
+    }
+  ],
+  "datasets": {
+    "project_status": {
+      "p06": {
+        "status": "已可运行",
+        "owner": "Workflow 小组",
+        "next_step": "补充更多任务模板"
+      },
+      "p07": {
+        "status": "已可运行",
+        "owner": "Multi-Agent 小组",
+        "next_step": "增加更多角色示例"
+      },
+      "p08": {
+        "status": "联调中",
+        "owner": "MCP 小组",
+        "next_step": "补充接入演示"
+      }
+    },
+    "workshops": [
+      {
+        "title": "Workflow 实战直播",
+        "time": "周三 20:00"
+      },
+      {
+        "title": "Multi-Agent 协作答疑",
+        "time": "周五 20:00"
+      }
+    ],
+    "policies": [
+      {
+        "keyword": "starter",
+        "content": "starter 目录只保留起始代码，不混入完整答案。"
+      },
+      {
+        "keyword": "中文",
+        "content": "项目说明、注释和运行指引统一使用中文。"
+      },
+      {
+        "keyword": "测试",
+        "content": "tests 至少覆盖主流程和一个失败场景。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "keyword": "tool calling",
+    "aliases": ["Tool Calling", "工具调用"],
+    "answer": "Tool Calling 是让模型先决定要不要调用工具，再由程序真正执行工具的机制。"
+  },
+  {
+    "keyword": "memory",
+    "aliases": ["Memory", "记忆"],
+    "answer": "Memory 用来保存和恢复上下文状态，帮助 Agent 记住必要信息。"
+  },
+  {
+    "keyword": "rag",
+    "aliases": ["RAG", "检索增强生成"],
+    "answer": "RAG 会先检索知识，再把检索结果交给生成步骤，减少凭空编造。"
+  }
+]
