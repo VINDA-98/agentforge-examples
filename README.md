@@ -2,9 +2,9 @@
 
 English · [简体中文](README.zh-CN.md)
 
-Ten hands-on Python labs that accompany the AgentForge documentation. Start with a small command-line agent, then work through JSON validation, tool use, memory, retrieval and workflow orchestration before putting those pieces together in a capstone service.
+Ten Python labs for the AgentForge course. The sequence starts with a command-line agent, covers structured output, tools, memory, retrieval and orchestration, then brings them together in a capstone service.
 
-Each lab has its own README, sample data, a runnable implementation under `src/`, a practice exercise under `starter/`, a reference under `solution/` and smoke tests under `tests/`. This repository contains the public exercises that accompany the docs site.
+Each lab has its own README, sample data, a runnable implementation under `src/`, a practice exercise under `starter/`, a reference under `solution/` and smoke tests under `tests/`.
 
 ## Run your first lab
 
